@@ -22,10 +22,10 @@ R_KEYS = {}
 for name in files:
     if name.find("-L") != -1:
         L_KEYS[name[0]] = pyglet.media.Player()
-        L_KEYS[name[0]].queue(pyglet.resource.media(name + ".wav", streaming = False))
+        L_KEYS[name[0]].queue(pyglet.resource.media("Notes/" + name + ".wav", streaming = False))
     else:
         R_KEYS[name[0]] = pyglet.media.Player()
-        R_KEYS[name[0]].queue(pyglet.resource.media(name + ".wav", streaming = False))
+        R_KEYS[name[0]].queue(pyglet.resource.media("Notes/" + name + ".wav", streaming = False))
 
 @window.event
 def on_draw():
