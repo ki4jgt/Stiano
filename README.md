@@ -5,7 +5,7 @@ The ergonomic design of the steno machine layout, makes pefect sense to transpos
 
 ## Usage
 
-Stiano requires a couple of things:
+I suggest a couple of things -- but they're not required:
 - An NKRO keyboard
 - The layout only works on QWERTY at the moment
 
