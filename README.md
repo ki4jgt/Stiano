@@ -41,12 +41,10 @@ P = A4
 
 ### Control Keys
 
-Future plans are to include the ability to switch scales, and display sheet music on your Stiano screen.
-
 The C,V and N,M keys are reserved for scales. The key to the left takes the corresponding hand down an octave, while the key to the right takes it up an octave.
 
 The Q and ; keys are reserved for flipping sheet music pages. Again, your fingers are in the cracks of all of these keys. All of them are within easy reach. (not yet working)
 
-I also plan to work flats and sharps into the layout as well.
+Flats and sharps will be worked into the layout.
 
 Enjoy the keyboard!
