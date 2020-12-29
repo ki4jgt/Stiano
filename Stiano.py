@@ -5,27 +5,22 @@ from time import sleep
 
 window = pyglet.window.Window()
 
-files = ["A-L", "A-R",
-        "B-L", "B-R",
-        "C-L", "C-R",
-        "D-L", "D-R",
-        "E-L", "E-R",
-        "F-L", "F-R",
-        "G-L", "G-R"]
+def trans(item):
+    player = pyglet.media.Player()
+    player.queue(pyglet.media.synthesis.Digitar(1.0, frequency=item))
+    player.loop = True
+    return player
 
-L_PITCH = 1.0
-R_PITCH = 1.0
+matrix = [[61.7354, 65.4064, 73.4162, 82.4069, 87.3071, 97.9989, 110.000], [123.471, 130.813, 146.832, 164.814, 174.614, 195.998, 220.000], [246.942, 261.626, 293.665, 329.628, 349.228, 391.995, 440.000], [493.883, 523.251, 587.330, 659.255, 698.456, 783.991, 880.000]]
 
-L_KEYS = {}
-R_KEYS = {}
+for i in range(len(matrix)):
+    matrix[i] = [*map(trans, matrix[i])]
 
-for name in files:
-    if name.find("-L") != -1:
-        L_KEYS[name[0]] = pyglet.media.Player()
-        L_KEYS[name[0]].queue(pyglet.resource.media("Notes/" + name + ".wav", streaming = False))
-    else:
-        R_KEYS[name[0]] = pyglet.media.Player()
-        R_KEYS[name[0]].queue(pyglet.resource.media("Notes/" + name + ".wav", streaming = False))
+L_KEYS = [97, 119, 115, 101, 100, 114, 102]
+R_KEYS = [117, 106, 105, 107, 111, 108, 112]
+
+L_OCTAVE = 1
+R_OCTAVE = 2
 
 @window.event
 def on_draw():
@@ -33,132 +28,50 @@ def on_draw():
 
 @window.event
 def on_key_press(symbol, modifiers):
-    global L_PITCH, R_PITCH, L_KEYS, R_KEYS
+    global L_OCTAVE, R_OCTAVE
 
-    if symbol == key.A:
-        L_KEYS["B"].seek(0)
-        L_KEYS["B"].play()
+    if symbol in L_KEYS:
+        matrix[L_OCTAVE][L_KEYS.index(symbol)].seek(0)
+        matrix[L_OCTAVE][L_KEYS.index(symbol)].play()
 
-    if symbol == key.W:
-        L_KEYS["C"].seek(0)
-        L_KEYS["C"].play()
-
-    if symbol == key.S:
-        L_KEYS["D"].seek(0)
-        L_KEYS["D"].play()
-
-    if symbol == key.E:
-        L_KEYS["E"].seek(0)
-        L_KEYS["E"].play()
-
-    if symbol == key.D:
-        L_KEYS["F"].seek(0)
-        L_KEYS["F"].play()
-
-    if symbol == key.R:
-        L_KEYS["G"].seek(0)
-        L_KEYS["G"].play()
-
-    if symbol == key.F:
-        L_KEYS["A"].seek(0)
-        L_KEYS["A"].play()
-
-    if symbol == key.U:
-        R_KEYS["B"].seek(0)
-        R_KEYS["B"].play()
-
-    if symbol == key.J:
-        R_KEYS["C"].seek(0)
-        R_KEYS["C"].play()
-
-    if symbol == key.I:
-        R_KEYS["D"].seek(0)
-        R_KEYS["D"].play()
-
-    if symbol == key.K:
-        R_KEYS["E"].seek(0)
-        R_KEYS["E"].play()
-
-    if symbol == key.O:
-        R_KEYS["F"].seek(0)
-        R_KEYS["F"].play()
-
-    if symbol == key.L:
-        R_KEYS["G"].seek(0)
-        R_KEYS["G"].play()
-
-    if symbol == key.P:
-        R_KEYS["A"].seek(0)
-        R_KEYS["A"].play()
+    if symbol in R_KEYS:
+        matrix[R_OCTAVE][R_KEYS.index(symbol)].seek(0)
+        matrix[R_OCTAVE][R_KEYS.index(symbol)].play()
 
     if symbol == key.C:
-        L_PITCH /= 2
+        L_OCTAVE -= 1
 
     if symbol == key.V:
-        L_PITCH *= 2
+        L_OCTAVE += 1
 
     if symbol == key.N:
-        R_PITCH /= 2
+        R_OCTAVE -= 1
 
     if symbol == key.M:
-        R_PITCH *= 2
+        R_OCTAVE += 1
 
 @window.event
 def on_key_release(symbol, modifiers):
-    global L_PITCH, R_PITCH, L_KEYS, R_KEYS
+    global L_OCTAVE, R_OCTAVE
 
-    if symbol == key.A:
-        L_KEYS["B"].pause()
+    if symbol in L_KEYS:
+        for i in range(4):
+            matrix[i][L_KEYS.index(symbol)].pause()
 
-    if symbol == key.W:
-        L_KEYS["C"].pause()
-
-    if symbol == key.S:
-        L_KEYS["D"].pause()
-
-    if symbol == key.E:
-        L_KEYS["E"].pause()
-
-    if symbol == key.D:
-        L_KEYS["F"].pause()
-
-    if symbol == key.R:
-        L_KEYS["G"].pause()
-
-    if symbol == key.F:
-        L_KEYS["A"].pause()
-
-    if symbol == key.U:
-        R_KEYS["B"].pause()
-
-    if symbol == key.J:
-        R_KEYS["C"].pause()
-
-    if symbol == key.I:
-        R_KEYS["D"].pause()
-
-    if symbol == key.K:
-        R_KEYS["E"].pause()
-
-    if symbol == key.O:
-        R_KEYS["F"].pause()
-
-    if symbol == key.L:
-        R_KEYS["G"].pause()
-
-    if symbol == key.P:
-        R_KEYS["A"].pause()
+    if symbol in R_KEYS:
+        for i in range(4):
+            matrix[i][R_KEYS.index(symbol)].pause()
 
     if symbol == key.C:
-        L_PITCH *= 2
+        L_OCTAVE += 1
 
     if symbol == key.V:
-        L_PITCH /= 2
+        L_OCTAVE -= 1
 
     if symbol == key.N:
-        R_PITCH *= 2
+        R_OCTAVE += 1
 
     if symbol == key.M:
-        R_PITCH /= 2
+        R_OCTAVE -= 1
 
 pyglet.app.run()
