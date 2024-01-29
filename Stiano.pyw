@@ -1,7 +1,11 @@
+#!/usr/bin/env python3
+
 import pyglet
 from pyglet.window import key
 
-from time import sleep
+import mido
+
+dev = mido.open_output("JT-4000 MICRO MIDI 1")
 
 window = pyglet.window.Window()
 
@@ -11,13 +15,10 @@ def trans(item):
     player.loop = True
     return player
 
-matrix = [[61.7354, 65.4064, 69.2957, 73.4162, 77.7817, 82.4069, 87.3071, 92.4986, 97.9989, 103.826, 110.000, 116.541],
-            [123.471, 130.813, 138.591, 146.832, 155.563, 164.814, 174.614, 184.997, 195.998, 207.652, 220.000, 233.082],
-            [246.942, 261.626, 277.183, 293.665, 311.127, 329.628, 349.228, 369.994, 391.995, 415.305, 440.000, 466.164],
-            [493.883, 523.251, 554.365, 587.330, 622.254, 659.255, 698.456, 739.989, 783.991, 830.609, 880.000, 932.328]]
-
-for i in range(len(matrix)):
-    matrix[i] = [*map(trans, matrix[i])]
+matrix = [[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+            [47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58],
+            [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70],
+            [71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]]
 
 L_KEYS = [97, 119, 50, 115, 51, 101, 100, 52, 114, 53, 102, 49]
 R_KEYS = [117, 106, 55, 105, 56, 107, 111, 57, 108, 48, 112, 54]
@@ -36,12 +37,10 @@ def on_key_press(symbol, modifiers):
     print(symbol)
 
     if symbol in L_KEYS:
-        matrix[L_OCTAVE][L_KEYS.index(symbol)].seek(0)
-        matrix[L_OCTAVE][L_KEYS.index(symbol)].play()
+        dev.send(mido.Message("note_on", note = matrix[L_OCTAVE][L_KEYS.index(symbol)]))
 
     if symbol in R_KEYS:
-        matrix[R_OCTAVE][R_KEYS.index(symbol)].seek(0)
-        matrix[R_OCTAVE][R_KEYS.index(symbol)].play()
+        dev.send(mido.Message("note_on", note = matrix[R_OCTAVE][R_KEYS.index(symbol)]))
 
     if symbol == key.C:
         L_OCTAVE -= 1
@@ -61,11 +60,11 @@ def on_key_release(symbol, modifiers):
 
     if symbol in L_KEYS:
         for i in range(4):
-            matrix[i][L_KEYS.index(symbol)].pause()
+            dev.send(mido.Message("note_off", note = matrix[i][L_KEYS.index(symbol)]))
 
     if symbol in R_KEYS:
         for i in range(4):
-            matrix[i][R_KEYS.index(symbol)].pause()
+            dev.send(mido.Message("note_off", note = matrix[i][R_KEYS.index(symbol)]))
 
     if symbol == key.C:
         L_OCTAVE += 1
