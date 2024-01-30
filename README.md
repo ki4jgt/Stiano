@@ -1,7 +1,7 @@
 # Play Like a Master Musician With Minimal Effort
 ## Glide from one octave to the next at the touch of a button!
 
-Stiano is an open source midi controller (**SYNTH REQUIRED!**) which uses the ergonomic design of stenotype to help you effortlessly create music using nothing but a standard keyboard (NKRO preferred)! Stiano is designed to keep your 10 fingers at homerow, while offering you a full 4 scale (48 keys) layout. If you can type, you can play music with Stiano.
+Stiano is an open source midi controller \(**SYNTH REQUIRED!**\) which uses the ergonomic design of stenotype to help you effortlessly create music using nothing but a standard keyboard (NKRO preferred)! Stiano is designed to keep your 10 fingers at homerow, while offering you a full 4 scale (48 keys) layout. If you can type, you can play music with Stiano.
 
 As a kid, I always wanted to play the piano. And though quite a few people were willing to tutor me, I could never manage to get to my lessons. Then my room started filling up with junk, and my free space got smaller and smaller. No space for a keyboard now!
 
