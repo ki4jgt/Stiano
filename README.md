@@ -95,4 +95,10 @@ Stiano requires the ```Pyglet``` and ```Mido``` Python libraries.
 
 ```pip install mido[ports-rtmidi] pyglet```
 
+## Notes
+
+Configuration can be done from the terminal. Options are available via ```-h``` or ```--help```.
+
+Failure to provide a synthesizer device name to ```--synth``` will default to the first available synth.
+
 **Enjoy Stiano!**
