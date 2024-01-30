@@ -27,7 +27,8 @@ Scales use the home row, the row above it, and the number keys. Each scale start
 
 Starting with the A key, we wrap around to W, and then descend to S. You can follow this wrap-and-descend motion all the way to the F key. This is the Left Hand Scale.
 
-
+| Piano | Keyboard |
+| ----- | -------- |
 | **B** | A-KEY |
 | **C** | W-KEY |
 | **D** | S-KEY |
@@ -44,6 +45,9 @@ Starting with the A key, we wrap around to W, and then descend to S. You can fol
 
 Starting with the U key, we descend to J, and then wrap around to I. You can follow this descend-and-wrap motion all the way to the P key. This is the Right Hand Scale.
 
+
+| Piano | Keyboard |
+| ----- | -------- |
 | **B** | U-KEY |
 | **C** | J-KEY |
 | **D** | I-KEY |
