@@ -22,32 +22,35 @@ Scales use the home row, the row above it, and the number keys. Each scale start
 ### Left Scale
 
 **C-Major Left:*** WER (CEG)
+
 ***D-Minor Left:*** SDF (DFA)
 
 Starting with the A key, we wrap around to W, and then descend to S. You can follow this wrap-and-descend motion all the way to the F key. This is the Left Hand Scale.
 
-|**B**|A-KEY|
-|**C**|W-KEY|
-|**D**|S-KEY|
-|**E**|E-KEY|
-|**F**|D-KEY|
-|**G**|R-KEY|
-|**A**|F-KEY|
+
+| **B** | A-KEY |
+| **C** | W-KEY |
+| **D** | S-KEY |
+| **E** | E-KEY |
+| **F** | D-KEY |
+| **G** | R-KEY |
+| **A** | F-KEY |
 
 ### Right Scale
 
 **C-Major Right:*** JKL (CEG)
+
 ***D-Minor Right:*** IOP (DFA)
 
 Starting with the U key, we descend to J, and then wrap around to I. You can follow this descend-and-wrap motion all the way to the P key. This is the Right Hand Scale.
 
-|**B**|U-KEY|
-|**C**|J-KEY|
-|**D**|I-KEY|
-|**E**|K-KEY|
-|**F**|O-KEY|
-|**G**|L-KEY|
-|**A**|P-KEY|
+| **B** | U-KEY |
+| **C** | J-KEY |
+| **D** | I-KEY |
+| **E** | K-KEY |
+| **F** | O-KEY |
+| **G** | L-KEY |
+| **A** | P-KEY |
 
 ### Sharps
 
